@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+    <script>
+       /* var x;
+        var n;
+        var y;
+        var z=0;
+        var resultados = [];
+        var puntosLocal=0;
+        var resultado=[];
+
+        function sumapuntos(){
+            
+            while(z<2){
+                resultados.push(prompt("introduce el resultado del partido"));
+                console.log(resultados)
+                
+                    resultado= resultados[n].split('');
+                    x = parseInt(resultado[0]);
+                    y = parseInt(resultado[1]);
+                    console.log(resultado[0])
+                    console.log(resultado[2])
+                    console.log(resultados)
+
+                    if(x>y){
+                        puntosLocal += 3 ;
+                        break;
+                    }else if(x===y){
+                        puntosLocal +=1;
+                        break;
+                    }
+                
+                z++;
+               
+                console.log(resultado)
+
+            }
+                      
+              alert(puntosLocal);
+        }*/
+        
+        //CALCULAR LOS PUNTOS TOTALES DE UN EQUIPO (SOLO SACAR LOS PUNTOS DEL LOCAL), 
+        // DICIENDOLE LOS RESULTADOS DE 10 JORNADAS SEPARADOS POR UN ":" EJ (2:1)
+        // LA VICTORIA SUMARA 3 PUNTOS, EL EMPATE SUMARA 1 PUNTO Y LA DERROTA NI SUMA NI RESTA 
+
+        function calcPoints() {
+            var n=0
+            let puntos = 0;
+            var resultados=[]
+            var promptMetido
+
+            while(n<2){
+                
+                promptMetido=prompt("Introduce el resultado")
+                resultados.push(promptMetido)
+                n++
+            }
+            console.log(resultados)
+
+            
+
+            
+            for (let i = 0; i < resultados.length; i++) {
+                var [ResultadoLocal, ResultadoRival] = resultados[i].split(":");
+
+                if (ResultadoLocal > ResultadoRival) {
+                    puntos += 3;
+                } else if (ResultadoLocal == ResultadoRival) {
+                    puntos += 1;
+                }
+            }
+
+            alert(puntos);
+        }
+
+        //calculo de los puntos del equipo local, forma de IVAN 
+        // le metes un array y va recorriendo sus valores con el forEach
+
+        function calculatePoints(arr) {
+            var totalPoints = 0
+            
+            arr.forEach(function getPointsMatch(matchResult) {
+                const [scoreLocal, scoreVisitante] = matchResult.split(':')
+            
+                if (scoreLocal > scoreVisitante) {
+                totalPoints += 3
+                } else if (scoreLocal === scoreVisitante) {
+                totalPoints += 1
+                }
+            })
+            
+            return totalPoints
+        }
+
+        const points = calculatePoints([
+        "1:2",
+        "1:2",
+        "3:2",
+        "1:2",
+        "0:0",
+        "2:2",
+        "3:2",
+        "8:2",
+        "0:2",
+        "2:2",
+        ])
+
+        console.log(points)
+
+
+        // DANDOME UN AÑO DECIR A QUE SIGLO PERTENECE, ( 0-100 INCLUIDOS)
+
+        function CalculateCentury (){
+                    
+            var anio = prompt("introduce una fecha");
+            var siglo = Math.ceil(anio/100);
+                
+            console.log("Pertenece al siglo "+siglo);
+        }
+
+        // CALCULAR EL TERCER ÁNGULO DE UN TRIÁNGULO CUANDO TE DAN LOS OTROS DOS (LA SUMA DE LOS TRES TIENE QUE DAR 180)
+    
+        function Triangle(){
+
+            // forma 1
+            var angle1 = parseInt(prompt("angulo 1"));
+            var angle2 = parseInt(prompt("angulo 2"));
+
+            angle3 = 180 - (angle1 + angle2);
+            console.log("esta es la forma con parseInt: "+angle3);
+
+            alert("ahora con la segunda manera ")
+            //forma 2
+
+            var angle1 = (prompt("angulo 1"));
+            var angle2 = (prompt("angulo 2"));
+
+            angle3 = 180 - angle1 - angle2;
+            console.log("Esta es la forma sin parseInt: "+angle3)
+
+            // la suma de todos da 180
+        }
+
+        //CALCULAR A QUE CUARTO PERTENECE CADA MES, 2 FORMAS DISTINTAS
+
+        function cuarto(){
+           
+           var respuesta = prompt("introduce un mes");
+
+           if(respuesta === "enero"||respuesta === "febrero"||respuesta === "marzo"||respuesta === "abril"){
+               alert("pertenece al primer trimestre");
+           }else if(respuesta === "mayo"||respuesta === "junio"||respuesta === "julio"||respuesta === "agosto"){
+               alert("pertenece al segundo trimestre");
+           }else if(respuesta === "septiembre"||respuesta === "octubre"||respuesta === "noviembre"||respuesta === "diciembre"){
+               alert("pertenece al tercer trimestre");
+           }else{
+               alert("este parámetro no es válido")
+           }
+       }
+
+
+
+       function cuarto2(){
+
+            var meses = ["enero", "febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+            var respuesta = prompt("introduce un mes");
+
+           if(meses[0]== respuesta||meses[1]== respuesta||meses[2]== respuesta||meses[3]== respuesta){
+               alert("pertenece al primer trimestre");
+           }else if (meses[4]== respuesta||meses[5]== respuesta||meses[6]== respuesta||meses[7]== respuesta){
+               alert("pertenece al segundo trimestre");
+           }else if (meses[8]== respuesta||meses[9]== respuesta||meses[10]== respuesta||meses[11]== respuesta){
+               alert("pertenece al tercer trimestre");
+           }
+       }
+
+
+       
+       var history = ["(555) 010-3535 00:13:24", "(442) 130-5165 01:36:26","(333) 010-5135 01:38:24"];
+        var phonebook = {'John' : '(555) 010-3535','Melissa' : '(442) 130-5165','Jack' : '(333) 010-5135'};
+
+
+       function closestFriends(history){
+
+        for(var x=0;x<history.length;x+15){
+            var telefonos = [];
+            telefono = history.slice(x,x+15);
+            telefonos.push(telefono);
+        }
+        console.log(telefonos);
+        
+        // hacer un substring 
+        // contar con expresion regular para separar el numero del tiempo. por caracteres 
+        //  while por un for 
+        // separar primero el numero sobre la duracion 
+        // una vez hecho eso separar dentro de la duracion las horas, minutos y segundos 
+        //  ordenarlos de mayor a menor 
+        // sacar el nombre por el numero que es hacer una comparacion sin mas ya que ya los tengo asignados en "phonebook"
+        
+        var x = 0;
+
+        while(x < history.length){
+
+           var minutos = history[x].split(":");     // no esta haciendo lo que quiero porque no es asi el split 
+           var segundos = history[x].split(":");
+           
+           if(segundos > "59"){
+                totalminutos++;
+           }
+           var totalminutos = totalminutos + minutos ;
+           var totalsegundos = totalsegundos + segundos;
+
+            console.log(totalminutos);
+            console.log(totalsegundos);
+            x++;
+            history[x+1];
+        };
+
+       }
+    </script>
+</head>
+<body>
+        <button onclick=" calcPoints()">puntos forma 2 (la que funciona)</button>
+        <button onclick="calculatePoints()"> puntos forma Iván</button>
+        
+        <button onclick="CalculateCentury()" style="background-color: red;">siglo</button>
+        <button onclick="Triangle()" style="background-color: violet ;">triangulo</button>
+
+        <button onclick="cuarto()">trimestre 1</button>
+        <button onclick="cuarto2()">trimestre 2 con array</button>
+        <button onclick="closestFriends()">Telefono</button>
+</body>
+</html>
